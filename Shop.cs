@@ -10,19 +10,35 @@ namespace Shop_2
     {
         public void List()
         {
-            Console.WriteLine($"Product name: {Cup.Name} Quantity: {Cup.Quantity} Price: {Cup.Price}Eur"); 
-            Console.WriteLine($"Product name: {Candy.Name} Quantity: {Candy.Quantity} Price: {Candy.Price}Eur");
-            Console.WriteLine($"Product name: {Book.Name} Quantity: {Book.Quantity} Price: {Book.Price}Eur");
+            if(Cup.Quantity > 0)
+            {
+                Console.WriteLine($"Product name: {Cup.Name} Quantity: {Cup.Quantity} Price: {Cup.Price}Eur");
+            }
+            if (Candy.Quantity > 0)
+            {
+                Console.WriteLine($"Product name: {Candy.Name} Quantity: {Candy.Quantity} Price: {Candy.Price}Eur");
+            }
+            if (Book.Quantity > 0)
+            {
+                Console.WriteLine($"Product name: {Book.Name} Quantity: {Book.Quantity} Price: {Book.Price}Eur");
+            }
         }
 
-        public void Buy(string product, string quantity)
+        public void Buy(string product, string quantity, User user)
         {
             if(product == "Cup")
             {
-                if (int.Parse(quantity) <= Cup.Quantity && int.Parse(quantity) > 0)
+                if (int.Parse(quantity) <= Cup.Quantity && int.Parse(quantity) > 0 && user.Balance >= (Cup.Price * double.Parse(quantity)))
                 {
+                    
                     Cup.Quantity = Cup.Quantity - int.Parse(quantity);
+                    user.Balance -= (Cup.Price * double.Parse(quantity));
+                    user.Balance = Math.Round(user.Balance, 2);
                     Console.WriteLine($"You are successfully bought a {Cup.Name}, quantity: {quantity}!");
+                }
+                else if (user.Balance < (Cup.Price * double.Parse(quantity)))
+                {
+                    Console.WriteLine("Sorry, you don't have such money!");
                 }
                 else
                 {
@@ -31,10 +47,16 @@ namespace Shop_2
             }
             else if (product == "Candy")
             {
-                if (int.Parse(quantity) <= Candy.Quantity && int.Parse(quantity) > 0)
+                if (int.Parse(quantity) <= Candy.Quantity && int.Parse(quantity) > 0 && user.Balance >= (Candy.Price * double.Parse(quantity)))
                 {
                     Candy.Quantity = Candy.Quantity - int.Parse(quantity);
+                    user.Balance -= (Candy.Price * double.Parse(quantity));
+                    user.Balance = Math.Round(user.Balance, 2);
                     Console.WriteLine($"You are successfully bought a {Candy.Name}, quantity: {quantity}!");
+                }
+                else if (user.Balance < (Candy.Price * double.Parse(quantity)))
+                {
+                    Console.WriteLine("Sorry, you don't have such money!");
                 }
                 else
                 {
@@ -43,11 +65,18 @@ namespace Shop_2
             }
             else if (product == "Book")
             {
-                if (int.Parse(quantity) <= Book.Quantity && int.Parse(quantity) > 0)
+                if (int.Parse(quantity) <= Book.Quantity && int.Parse(quantity) > 0 && user.Balance >= (Book.Price * double.Parse(quantity)))
                 {
                     Book.Quantity = Book.Quantity - int.Parse(quantity);
+                    user.Balance -= (Book.Price * double.Parse(quantity));
+                    user.Balance = Math.Round(user.Balance, 2);
                     Console.WriteLine($"You are successfully bought a {Book.Name}, quantity: {quantity}!");
-                } else
+                }
+                else if (user.Balance < (Book.Price * double.Parse(quantity)))
+                {
+                    Console.WriteLine("Sorry, you don't have such money!");
+                }
+                else
                 {
                     Console.WriteLine("Sorry, we don't have such quantity on stock!");
                 }

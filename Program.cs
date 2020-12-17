@@ -11,6 +11,7 @@ namespace Shop_2
             Console.WriteLine("Enter to end program: \"stop\"");
             string action = Console.ReadLine();
             string[] data = action.Split(" ");
+            var user = new User();
 
             while (data[0] != "stop")
             {
@@ -23,7 +24,7 @@ namespace Shop_2
                 {
                     try
                     {
-                        shop.Buy(data[1], data[2]);
+                        shop.Buy(data[1], data[2], user);
                     }
                     catch (Exception)
                     {
@@ -42,7 +43,31 @@ namespace Shop_2
 
                         Console.WriteLine("There is no such command");
                     }
-                } 
+                }
+                else if (data[0] == "Topup")
+                {
+                    try
+                    {
+                        user.Add(data[1]);
+                    }
+                    catch (Exception)
+                    {
+
+                        Console.WriteLine("There is no such command");
+                    }
+                }
+                else if (data[0] == "Show" && data[1] == "Balance")
+                {
+                    try
+                    {
+                        user.ShowBalance();
+                    }
+                    catch (Exception)
+                    {
+
+                        Console.WriteLine("There is no such command");
+                    }
+                }
                 else
                 {
                     Console.WriteLine("There is no such command");
