@@ -26,7 +26,7 @@ namespace Shop_2
 
         public void Buy(string product, string quantity, User user)
         {
-            if(product == "Cup")
+            if(product == "cup")
             {
                 if (int.Parse(quantity) <= Cup.Quantity && int.Parse(quantity) > 0 && user.Balance >= (Cup.Price * double.Parse(quantity)))
                 {
@@ -45,7 +45,7 @@ namespace Shop_2
                     Console.WriteLine("Sorry, we don't have such quantity on stock!");
                 }
             }
-            else if (product == "Candy")
+            else if (product == "candy")
             {
                 if (int.Parse(quantity) <= Candy.Quantity && int.Parse(quantity) > 0 && user.Balance >= (Candy.Price * double.Parse(quantity)))
                 {
@@ -63,7 +63,7 @@ namespace Shop_2
                     Console.WriteLine("Sorry, we don't have such quantity on stock!");
                 }
             }
-            else if (product == "Book")
+            else if (product == "book")
             {
                 if (int.Parse(quantity) <= Book.Quantity && int.Parse(quantity) > 0 && user.Balance >= (Book.Price * double.Parse(quantity)))
                 {
@@ -89,7 +89,7 @@ namespace Shop_2
 
         public void Add(string product, string quantity)
         {
-            if (product == "Cup")
+            if (product == "cup")
             {
                 if (int.Parse(quantity) >= 0)
                 {
@@ -101,7 +101,7 @@ namespace Shop_2
                     Console.WriteLine("Sorry, You can't add negative quantity");
                 }
             }
-            else if (product == "Candy")
+            else if (product == "candy")
             {
                 if (int.Parse(quantity) >= 0)
                 {
@@ -113,7 +113,7 @@ namespace Shop_2
                     Console.WriteLine("Sorry, You can't add negative quantity");
                 }
             }
-            else if (product == "Book")
+            else if (product == "book")
             {
                 if (int.Parse(quantity) >= 0)
                 {
