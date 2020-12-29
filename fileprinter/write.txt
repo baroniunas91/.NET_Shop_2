@@ -1,0 +1,28 @@
+Please enter an action - List, Buy, Add
+Example: Add Candy 5
+Enter to end program: "stop"
+You are successfully added a Cup, quantity: 8!
+You are successfully top up user account
+You are successfully bought a Cup, quantity: 3!
+Product name: Cup Quantity: 5 Price: 1,99Eur
+User balance is: 94,03Eur
+You are successfully added a Book, quantity: 1!
+There is no such command
+Sorry, we don't have such quantity on stock!
+You are successfully bought a Book, quantity: 1!
+Product name: Cup Quantity: 5 Price: 1,99Eur
+User balance is: 84,04Eur
+Please enter an action - List, Buy, Add
+Example: Add Candy 5
+Enter to end program: "stop"
+You are successfully added a Cup, quantity: 8!
+You are successfully top up user account
+You are successfully bought a Cup, quantity: 3!
+Product name: Cup Quantity: 5 Price: 1,99Eur
+User balance is: 94,03Eur
+You are successfully added a Book, quantity: 1!
+There is no such command
+Sorry, we don't have such quantity on stock!
+You are successfully bought a Book, quantity: 1!
+Product name: Cup Quantity: 5 Price: 1,99Eur
+User balance is: 84,04Eur

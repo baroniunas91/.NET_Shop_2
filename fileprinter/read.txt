@@ -1,0 +1,11 @@
+add cup 8
+topup 100
+buy cup 3
+list
+show balance
+add book 1
+add
+buy book 2
+buy book 1
+list
+show balance

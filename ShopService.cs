@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,25 +6,31 @@ using System.Threading.Tasks;
 
 namespace Shop_2
 {
-    public class Shop
+    public class ShopService
     {
+        private readonly IPrinter _printService;
+
+        public ShopService(IPrinter printer)
+        {
+            _printService = printer;
+        }
         public void List()
         {
             if(Cup.Quantity > 0)
             {
-                Console.WriteLine($"Product name: {Cup.Name} Quantity: {Cup.Quantity} Price: {Cup.Price}Eur");
+                _printService.Print($"Product name: {Cup.Name} Quantity: {Cup.Quantity} Price: {Cup.Price}Eur");
             }
             if (Candy.Quantity > 0)
             {
-                Console.WriteLine($"Product name: {Candy.Name} Quantity: {Candy.Quantity} Price: {Candy.Price}Eur");
+                _printService.Print($"Product name: {Candy.Name} Quantity: {Candy.Quantity} Price: {Candy.Price}Eur");
             }
             if (Book.Quantity > 0)
             {
-                Console.WriteLine($"Product name: {Book.Name} Quantity: {Book.Quantity} Price: {Book.Price}Eur");
+                _printService.Print($"Product name: {Book.Name} Quantity: {Book.Quantity} Price: {Book.Price}Eur");
             }
         }
 
-        public void Buy(string product, string quantity, User user)
+        public void Buy(string product, string quantity, UserService user)
         {
             if(product == "cup")
             {
@@ -34,15 +40,15 @@ namespace Shop_2
                     Cup.Quantity = Cup.Quantity - int.Parse(quantity);
                     user.Balance -= (Cup.Price * double.Parse(quantity));
                     user.Balance = Math.Round(user.Balance, 2);
-                    Console.WriteLine($"You are successfully bought a {Cup.Name}, quantity: {quantity}!");
+                    _printService.Print($"You are successfully bought a {Cup.Name}, quantity: {quantity}!");
                 }
                 else if (user.Balance < (Cup.Price * double.Parse(quantity)))
                 {
-                    Console.WriteLine("Sorry, you don't have such money!");
+                    _printService.Print("Sorry, you don't have such money!");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, we don't have such quantity on stock!");
+                    _printService.Print("Sorry, we don't have such quantity on stock!");
                 }
             }
             else if (product == "candy")
@@ -52,15 +58,15 @@ namespace Shop_2
                     Candy.Quantity = Candy.Quantity - int.Parse(quantity);
                     user.Balance -= (Candy.Price * double.Parse(quantity));
                     user.Balance = Math.Round(user.Balance, 2);
-                    Console.WriteLine($"You are successfully bought a {Candy.Name}, quantity: {quantity}!");
+                    _printService.Print($"You are successfully bought a {Candy.Name}, quantity: {quantity}!");
                 }
                 else if (user.Balance < (Candy.Price * double.Parse(quantity)))
                 {
-                    Console.WriteLine("Sorry, you don't have such money!");
+                    _printService.Print("Sorry, you don't have such money!");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, we don't have such quantity on stock!");
+                    _printService.Print("Sorry, we don't have such quantity on stock!");
                 }
             }
             else if (product == "book")
@@ -70,20 +76,20 @@ namespace Shop_2
                     Book.Quantity = Book.Quantity - int.Parse(quantity);
                     user.Balance -= (Book.Price * double.Parse(quantity));
                     user.Balance = Math.Round(user.Balance, 2);
-                    Console.WriteLine($"You are successfully bought a {Book.Name}, quantity: {quantity}!");
+                    _printService.Print($"You are successfully bought a {Book.Name}, quantity: {quantity}!");
                 }
                 else if (user.Balance < (Book.Price * double.Parse(quantity)))
                 {
-                    Console.WriteLine("Sorry, you don't have such money!");
+                    _printService.Print("Sorry, you don't have such money!");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, we don't have such quantity on stock!");
+                    _printService.Print("Sorry, we don't have such quantity on stock!");
                 }
             }
             else
             {
-                Console.WriteLine("Buy process is not successfully!");
+                _printService.Print("Buy process is not successfully!");
             }
         }
 
@@ -94,11 +100,11 @@ namespace Shop_2
                 if (int.Parse(quantity) >= 0)
                 {
                     Cup.Quantity = Cup.Quantity + int.Parse(quantity);
-                    Console.WriteLine($"You are successfully added a {Cup.Name}, quantity: {quantity}!");
+                    _printService.Print($"You are successfully added a {Cup.Name}, quantity: {quantity}!");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, You can't add negative quantity");
+                    _printService.Print("Sorry, You can't add negative quantity");
                 }
             }
             else if (product == "candy")
@@ -106,11 +112,11 @@ namespace Shop_2
                 if (int.Parse(quantity) >= 0)
                 {
                     Candy.Quantity = Candy.Quantity + int.Parse(quantity);
-                    Console.WriteLine($"You are successfully added a {Candy.Name}, quantity: {quantity}!");
+                    _printService.Print($"You are successfully added a {Candy.Name}, quantity: {quantity}!");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, You can't add negative quantity");
+                    _printService.Print("Sorry, You can't add negative quantity");
                 }
             }
             else if (product == "book")
@@ -118,16 +124,16 @@ namespace Shop_2
                 if (int.Parse(quantity) >= 0)
                 {
                     Book.Quantity = Book.Quantity + int.Parse(quantity);
-                    Console.WriteLine($"You are successfully added a {Book.Name}, quantity: {quantity}!");
+                    _printService.Print($"You are successfully added a {Book.Name}, quantity: {quantity}!");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, You can't add negative quantity");
+                    _printService.Print("Sorry, You can't add negative quantity");
                 }
             }
             else
             {
-                Console.WriteLine("Add process is not successfully!");
+                _printService.Print("Add process is not successfully!");
             }
 
         }
